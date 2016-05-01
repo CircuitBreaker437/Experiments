@@ -1,4 +1,3 @@
-
 class Employee:
     employee_count = 0
 
@@ -35,10 +34,19 @@ print ("Current count(1): %d" % employee1.getCurrentCount())
 print ("Current count(3): %d" % employee3.getCurrentCount())
 
 class SeasonalEmployee(Employee):
-    def __init__(self):
-        Employee.employee_count += 1
+    seasonalEmployeeCount = 0
+    
+    def __init__(self, nameSeasonal, salarySeasonal):
+        #self.employee_count += 1 #in here the global employee_count will not incremented!!!
+        Employee.employee_count += 1 #this will incerement the global employee count
+        SeasonalEmployee.seasonalEmployeeCount += 1
+        self.employee_name = nameSeasonal
+        self.employee_salary = salarySeasonal
+        
 
-employee4 = SeasonalEmployee().setEmployeeName('Janek')
-employee4 = SeasonalEmployee().setEmployeeSalary(13000)
+employee4 = SeasonalEmployee('Janek', 13000)
 
-print("Current count(4): %d" % employee4.getCurrentCount())
+
+print("Current total count(4): %d" % employee4.employee_count)
+print ("Current total count(3): %d" % employee3.getCurrentCount())
+print ("Current total seasonal employee count: %d" % employee4.seasonalEmployeeCount)
